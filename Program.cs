@@ -21,7 +21,7 @@ app.MapGet("/itensCarrinho/{idCarrinho}", (int idCarrinho) =>
     if (aux != null)
         return Results.Ok(aux.Itens);
     else
-        return Results.NoContent();
+        return Results.NotFound();
 }).WithName("itensdocarrinho/{idCarrrinho}");
 
 app.MapPost("/carrinhoadd/{idCarrinho}", (int idCarrinho, Produto produto) =>
@@ -53,7 +53,7 @@ app.MapDelete("/removeritem/{idCarrinho}/{idproduto}", (int idCarrinho, int idpr
         }
         else
         {
-            return Results.NoContent();
+            return Results.NotFound();
         }
     }
     else

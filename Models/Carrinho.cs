@@ -11,15 +11,9 @@
         public ICollection<Produto> Itens { get; set; }
 
         public string TotalCarrinho() {
-            int quantidade=0;
-            double total = 0;
-            foreach (Produto produto in Itens)
-            {
-                quantidade += produto.quantidade;
-                total += produto.quantidade * produto.valorUnitario;
-            }
-            return "Quantidade: "+ quantidade + " /Total do Carrinho: "+total.ToString();
+            int quantidade = Itens.Count;
+            double total = Itens.Sum(c => c.valorUnitario * c.quantidade);
+            return "Quantidade de Produtos: " + quantidade + " / Total do Carrinho: " + total.ToString();
         }
-
     }
 }
